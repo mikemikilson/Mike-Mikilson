@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6d28d9">
+  <meta name="description" content="Mike Mikilson Promove — música, artistas, vídeos, cultura e entretenimento.">
+  <title>Mike Mikilson Promove | Música • Cultura • Entretenimento</title>
+
+  <style>
+    :root{
+      --purple:#6d28d9;
+      --purple-dark:#4c1d95;
+      --pink:#ec4899;
+      --orange:#f97316;
+      --yellow:#facc15;
+      --blue:#2563eb;
+      --ink:#171329;
+      --muted:#6b6780;
+      --light:#faf8ff;
+      --white:#fff;
+      --line:#ece8f5;
+      --shadow:0 18px 50px rgba(65,32,120,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--light);
+      color:var(--ink);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+
+    /* TOP / HEADER */
+    .topbar{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:1000;
+      background:rgba(255,255,255,.90);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(236,232,245,.9);
+    }
+    .nav{
+      max-width:1180px;
+      margin:auto;
+      height:76px;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:950;
+      letter-spacing:-.7px;
+      white-space:nowrap;
+    }
+    .brand-icon{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      color:white;font-size:21px;
+      background:linear-gradient(135deg,var(--purple),var(--pink),var(--orange));
+      box-shadow:0 10px 24px rgba(109,40,217,.25);
+    }
+    .brand-name{font-size:17px}
+    .brand-name span{
+      background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    .nav-links{display:flex;align-items:center;gap:5px}
+    .nav-links a{
+      padding:10px 13px;
+      border-radius:12px;
+      font-weight:750;
+      font-size:14px;
+      color:#49445a;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{background:#f2edff;color:var(--purple)}
+    .nav-cta{
+      background:var(--ink)!important;
+      color:#fff!important;
+      padding:11px 17px!important;
+    }
+
+    .menu-btn{
+      display:none;
+      border:0;background:#f2edff;color:var(--purple);
+      width:44px;height:44px;border-radius:13px;
+      cursor:pointer;font-size:22px;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:150px 20px 90px;
+      min-height:720px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 15%,rgba(236,72,153,.16),transparent 28%),
+        radial-gradient(circle at 90% 18%,rgba(37,99,235,.15),transparent 28%),
+        radial-gradient(circle at 65% 90%,rgba(250,204,21,.18),transparent 25%),
+        linear-gradient(135deg,#fff 0%,#fbf8ff 55%,#fff 100%);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:420px;height:420px;
+      border-radius:50%;
+      right:-150px;top:80px;
+      background:linear-gradient(135deg,rgba(109,40,217,.10),rgba(236,72,153,.10));
+      filter:blur(2px);
+    }
+    .hero-inner{
+      max-width:1180px;margin:auto;
+      display:grid;grid-template-columns:1.08fr .92fr;
+      align-items:center;gap:50px;position:relative;z-index:1;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 13px;border-radius:999px;
+      background:#f2edff;color:var(--purple);
+      font-weight:850;font-size:12px;letter-spacing:.5px;
+      margin-bottom:20px;
+    }
+    .hero h1{
+      font-size:clamp(48px,7vw,82px);
+      line-height:.93;
+      letter-spacing:-4px;
+      max-width:720px;
+      margin-bottom:24px;
+    }
+    .hero h1 .line1{display:block}
+    .hero h1 .gradient{
+      display:block;
+      background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange),var(--blue));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-text{
+      color:var(--muted);font-size:18px;max-width:650px;
+      margin-bottom:30px;
+    }
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      min-height:48px;padding:0 20px;border-radius:14px;
+      border:1px solid var(--line);font-weight:850;
+      transition:.2s ease;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(35,20,70,.12)}
+    .btn-primary{
+      color:white;border-color:transparent;
+      background:linear-gradient(100deg,var(--purple),var(--pink));
+    }
+    .btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .btn-light{background:#fff}
+
+    .hero-art{
+      min-height:440px;position:relative;
+      display:grid;place-items:center;
+    }
+    .vinyl{
+      width:min(390px,75vw);aspect-ratio:1;
+      border-radius:50%;
+      background:
+        repeating-radial-gradient(circle at center,#17151e 0 2px,#25222d 3px 4px),
+        #17151e;
+      box-shadow:0 30px 70px rgba(24,15,44,.25);
+      position:relative;
+      animation:float 6s ease-in-out infinite;
+    }
+    .vinyl::after{
+      content:"";
+      position:absolute;inset:25%;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--purple),var(--pink),var(--orange));
+      box-shadow:inset 0 0 0 12px rgba(255,255,255,.14);
+    }
+    .vinyl::before{
+      content:"MIKE";
+      position:absolute;inset:0;display:grid;place-items:center;
+      z-index:2;color:white;font-size:22px;font-weight:950;
+      letter-spacing:3px;
+    }
+    .floating-card{
+      position:absolute;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:var(--shadow);
+      border-radius:20px;
+      padding:15px 17px;
+      font-weight:850;
+      backdrop-filter:blur(12px);
+    }
+    .floating-card.one{left:2%;top:14%}
+    .floating-card.two{right:1%;bottom:12%}
+    .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:var(--pink)}
+
+    @keyframes float{50%{transform:translateY(-12px) rotate(3deg)}}
+
+    /* SECTIONS */
+    section{scroll-margin-top:95px}
+    .section{padding:90px 20px}
+    .container{max-width:1180px;margin:auto}
+    .section-head{
+      display:flex;align-items:end;justify-content:space-between;
+      gap:25px;margin-bottom:30px;
+    }
+    .kicker{
+      color:var(--purple);font-weight:900;font-size:12px;
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;
+    }
+    .section-title{
+      font-size:clamp(30px,4vw,48px);
+      line-height:1.05;letter-spacing:-2px;
+    }
+    .section-sub{color:var(--muted);max-width:620px;margin-top:10px}
+    .view-all{color:var(--purple);font-weight:850}
+
+    /* FEATURE GRID */
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{
+      position:relative;overflow:hidden;min-height:220px;
+      border-radius:var(--radius);padding:28px;
+      color:#fff;box-shadow:var(--shadow);
+    }
+    .feature:nth-child(1){background:linear-gradient(135deg,#6d28d9,#a855f7)}
+    .feature:nth-child(2){background:linear-gradient(135deg,#ec4899,#f97316)}
+    .feature:nth-child(3){background:linear-gradient(135deg,#2563eb,#06b6d4)}
+    .feature::after{
+      content:"";position:absolute;width:170px;height:170px;
+      border-radius:50%;right:-50px;bottom:-65px;background:rgba(255,255,255,.14)
+    }
+    .feature-icon{font-size:35px;margin-bottom:20px}
+    .feature h3{font-size:23px;margin-bottom:8px}
+    .feature p{color:rgba(255,255,255,.86);font-size:14px;max-width:310px}
+
+    /* MUSIC */
+    .music-section{
+      background:#171329;color:#fff;
+      position:relative;overflow:hidden;
+    }
+    .music-section::before{
+      content:"";position:absolute;width:500px;height:500px;
+      border-radius:50%;right:-180px;top:-200px;
+      background:radial-gradient(circle,rgba(236,72,153,.25),transparent 68%);
+    }
+    .music-section .section-sub{color:#aaa5bb}
+    .music-section .kicker{color:#f9a8d4}
+    .music-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+    .music-card{
+      overflow:hidden;border:1px solid rgba(255,255,255,.09);
+      background:#211d38;border-radius:22px;
+      transition:.2s ease;
+    }
+    .music-card:hover{transform:translateY(-4px);border-color:rgba(236,72,153,.4)}
+    .cover{
+      aspect-ratio:1/1;display:grid;place-items:center;
+      background:linear-gradient(135deg,#31235d,#ec4899 55%,#f97316);
+      position:relative;overflow:hidden;
+    }
+    .cover::before{
+      content:"♪";font-size:100px;color:rgba(255,255,255,.18);
+      position:absolute;transform:rotate(-10deg)
+    }
+    .cover-label{
+      z-index:1;font-weight:950;font-size:18px;letter-spacing:1px;
+      text-align:center;padding:20px;
+    }
+    .music-info{padding:18px}
+    .music-info small{color:#aaa5bb}
+    .music-info h3{font-size:20px;margin:3px 0}
+    .music-info p{color:#aaa5bb;font-size:14px;margin-bottom:15px}
+    .music-info .btn{width:100%;color:#fff;border-color:rgba(255,255,255,.15);background:#2a2544}
+
+    /* ARTISTS / VIDEO */
+    .artists-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .artist-card{
+      background:#fff;border:1px solid var(--line);
+      border-radius:22px;padding:14px;box-shadow:0 10px 35px rgba(55,35,100,.06)
+    }
+    .artist-photo{
+      aspect-ratio:1/1;border-radius:16px;
+      background:linear-gradient(135deg,#ede9fe,#fce7f3,#ffedd5);
+      display:grid;place-items:center;font-size:55px;
+      overflow:hidden;
+    }
+    .artist-card h3{margin:15px 4px 2px}
+    .artist-card p{margin:0 4px 13px;color:var(--muted);font-size:13px}
+    .artist-link{margin:0 4px;color:var(--purple);font-weight:850;font-size:14px}
+
+    .video-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
+    .video-main,.video-small{
+      border-radius:24px;overflow:hidden;position:relative;
+      min-height:280px;background:#171329;color:white;
+      display:flex;align-items:end;padding:24px;
+    }
+    .video-main{
+      background:linear-gradient(135deg,#31235d,#6d28d9 50%,#ec4899);
+      min-height:390px;
+    }
+    .video-small{background:linear-gradient(135deg,#0f766e,#2563eb)}
+    .video-small + .video-small{background:linear-gradient(135deg,#ea580c,#ec4899)}
+    .video-stack{display:grid;gap:18px}
+    .play{
+      position:absolute;top:22px;right:22px;
+      width:52px;height:52px;border-radius:50%;
+      display:grid;place-items:center;background:#fff;color:var(--purple);
+      font-size:20px;box-shadow:0 10px 25px rgba(0,0,0,.18)
+    }
+    .video-copy{position:relative;z-index:1}
+    .video-copy small{opacity:.75}
+    .video-copy h3{font-size:25px;line-height:1.1;margin-top:4px}
+
+    /* PROMO */
+    .promo{
+      background:linear-gradient(120deg,#f3e8ff,#fce7f3 48%,#fff7ed);
+    }
+    .promo-box{
+      display:grid;grid-template-columns:1fr .85fr;gap:35px;
+      align-items:center;padding:45px;
+      background:#fff;border:1px solid var(--line);
+      border-radius:30px;box-shadow:var(--shadow);
+    }
+    .promo-list{display:grid;gap:12px;margin:24px 0}
+    .promo-list div{display:flex;gap:11px;align-items:center;font-weight:750}
+    .check{
+      width:28px;height:28px;border-radius:9px;
+      display:grid;place-items:center;color:#fff;
+      background:linear-gradient(135deg,var(--purple),var(--pink));
+      flex:none;
+    }
+    .promo-art{
+      min-height:300px;border-radius:25px;
+      background:
+        radial-gradient(circle at 25% 25%,rgba(255,255,255,.4),transparent 20%),
+        linear-gradient(135deg,var(--purple),var(--pink),var(--orange));
+      display:grid;place-items:center;color:#fff;
+      text-align:center;padding:30px;
+    }
+    .promo-art strong{font-size:40px;line-height:1.05;display:block}
+
+    /* EVENTS / CONTACT */
+    .event-box{
+      display:grid;grid-template-columns:auto 1fr auto;
+      align-items:center;gap:20px;
+      background:#fff;border:1px solid var(--line);
+      border-radius:22px;padding:22px;
+      box-shadow:0 10px 35px rgba(55,35,100,.06);
+    }
+    .date{
+      width:72px;height:72px;border-radius:18px;
+      display:grid;place-items:center;text-align:center;
+      background:#f2edff;color:var(--purple);
+      font-weight:950;line-height:1.05
+    }
+    .date span{font-size:11px;text-transform:uppercase}
+    .event-box h3{font-size:21px}.event-box p{color:var(--muted);font-size:14px}
+
+    .contact{
+      padding:80px 20px;
+      background:#171329;color:#fff;
+    }
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .contact .section-sub{color:#aaa5bb}
+    .contact-card{
+      background:#211d38;border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;padding:25px;display:grid;gap:12px
+    }
+    .contact-card a{
+      padding:15px;border-radius:15px;background:#2a2544;
+      font-weight:800;transition:.2s
+    }
+    .contact-card a:hover{background:#342d53}
+
+    footer{
+      background:#0f0d1b;color:#918ba2;
+      padding:28px 20px;text-align:center;font-size:13px
+    }
+    footer strong{color:#fff}
+
+    /* WHATSAPP */
+    .whatsapp{
+      position:fixed;right:18px;bottom:18px;z-index:1100;
+      width:58px;height:58px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#25d366;color:#fff;font-size:27px;
+      box-shadow:0 12px 30px rgba(37,211,102,.35);
+      transition:.2s ease
+    }
+    .whatsapp:hover{transform:translateY(-4px) scale(1.04)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-inner,.promo-box,.contact-grid{grid-template-columns:1fr}
+      .hero{padding-top:125px}
+      .hero-art{min-height:370px}
+      .feature-grid,.music-grid{grid-template-columns:1fr 1fr}
+      .artists-grid{grid-template-columns:repeat(2,1fr)}
+      .video-grid{grid-template-columns:1fr}
+      .video-stack{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:700px){
+      .nav{height:68px}
+      .menu-btn{display:block}
+      .nav-links{
+        position:absolute;left:14px;right:14px;top:76px;
+        display:none;flex-direction:column;align-items:stretch;
+        background:#fff;border:1px solid var(--line);
+        border-radius:20px;padding:10px;box-shadow:var(--shadow)
+      }
+      .nav-links.open{display:flex}
+      .nav-links a{padding:13px 15px}
+      .nav-cta{text-align:center}
+      .brand-name{font-size:14px}
+      .hero{padding:112px 18px 65px;min-height:auto}
+      .hero h1{font-size:52px;letter-spacing:-3px}
+      .hero-text{font-size:16px}
+      .hero-art{min-height:330px}
+      .vinyl{width:280px}
+      .floating-card{font-size:12px;padding:12px}
+      .section{padding:65px 18px}
+      .section-head{display:block}
+      .section-title{font-size:36px}
+      .feature-grid,.music-grid,.artists-grid{grid-template-columns:1fr}
+      .video-stack{grid-template-columns:1fr}
+      .video-main{min-height:300px}
+      .promo-box{padding:25px}
+      .promo-art{min-height:230px}
+      .event-box{grid-template-columns:auto 1fr}
+      .event-box .btn{grid-column:1/-1;width:100%}
+      .contact{padding:65px 18px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <nav class="nav">
+      <a href="#inicio" class="brand" aria-label="Mike Mikilson Promove">
+        <span class="brand-icon">🎵</span>
+        <span class="brand-name">MIKE <span>MIKILSON</span></span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Início</a>
+        <a href="#musicas">Músicas</a>
+        <a href="#artistas">Artistas</a>
+        <a href="#videos">Vídeos</a>
+        <a href="#promocao">Promoção</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#contacto" class="nav-cta">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">🎧 MÚSICA • CULTURA • ENTRETENIMENTO</div>
+          <h1>
+            <span class="line1">Mike</span>
+            <span class="gradient">Mikilson</span>
+            <span class="line1">Promove.</span>
+          </h1>
+          <p class="hero-text">
+            Uma plataforma dedicada à promoção de músicas, artistas, vídeos,
+            cultura e entretenimento angolano e internacional.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#musicas">🎧 Explorar músicas</a>
+            <a class="btn btn-dark" href="https://wa.me/244958940058?text=Olá%20Mike!%20Quero%20promover%20minha%20música%20no%20Mike%20Mikilson%20Promove" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="floating-card one"><span class="dot"></span>Novos lançamentos</div>
+          <div class="vinyl"></div>
+          <div class="floating-card two">🔥 Artistas em destaque</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE PROMOVEMOS -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">O universo Mike Mikilson</div>
+            <h2 class="section-title">Conteúdo que coloca a música em movimento.</h2>
+            <p class="section-sub">Uma estrutura preparada para reunir lançamentos, artistas, vídeos e serviços num só lugar.</p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon">🎵</div>
+            <h3>Novos Lançamentos</h3>
+            <p>Espaço para apresentar músicas, capas, artistas e links oficiais para ouvir.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">⭐</div>
+            <h3>Artistas em Destaque</h3>
+            <p>Perfis para apresentar artistas, biografias e os seus principais trabalhos.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🎬</div>
+            <h3>Vídeos & Entretenimento</h3>
+            <p>Área preparada para videoclipes, entrevistas e outros conteúdos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÚSICAS -->
+    <section class="section music-section" id="musicas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Lançamentos</div>
+            <h2 class="section-title">Músicas em destaque 🎵</h2>
+            <p class="section-sub">Adiciona aqui os links oficiais das músicas à medida que forem sendo publicados.</p>
+          </div>
+        </div>
+
+        <div class="music-grid">
+          <article class="music-card">
+            <div class="cover">
+              <div class="cover-label">VAI NA FÉ<br><small>MIKE MIKILSON</small></div>
+            </div>
+            <div class="music-info">
+              <small>Lançamento</small>
+              <h3>Vai na Fé</h3>
+              <p>Mike Mikilson • Excess in love</p>
+              <a class="btn" href="#contacto">▶ Ouvir / Link oficial</a>
+            </div>
+          </article>
+
+          <article class="music-card">
+            <div class="cover">
+              <div class="cover-label">CATARINA<br><small>MIKE MIKILSON</small></div>
+            </div>
+            <div class="music-info">
+              <small>Single</small>
+              <h3>Catarina</h3>
+              <p>Mike Mikilson</p>
+              <a class="btn" href="#contacto">▶ Ouvir / Link oficial</a>
+            </div>
+          </article>
+
+          <article class="music-card">
+            <div class="cover">
+              <div class="cover-label">BREVEMENTE<br>🎧</div>
+            </div>
+            <div class="music-info">
+              <small>Espaço reservado</small>
+              <h3>Nova música</h3>
+              <p>Adiciona aqui o próximo lançamento.</p>
+              <a class="btn" href="#contacto">+ Adicionar lançamento</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTISTAS -->
+    <section class="section" id="artistas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Talentos</div>
+            <h2 class="section-title">Artistas em destaque ⭐</h2>
+            <p class="section-sub">Área preparada para fotos, biografias, músicas e links de cada artista.</p>
+          </div>
+        </div>
+
+        <div class="artists-grid">
+          <article class="artist-card">
+            <div class="artist-photo">🎤</div>
+            <h3>Mike Mikilson</h3>
+            <p>Artista</p>
+            <a class="artist-link" href="#contacto">Ver perfil →</a>
+          </article>
+
+          <article class="artist-card">
+            <div class="artist-photo">🎙️</div>
+            <h3>Artista em breve</h3>
+            <p>Perfil disponível em breve</p>
+            <a class="artist-link" href="#contacto">Adicionar artista →</a>
+          </article>
+
+          <article class="artist-card">
+            <div class="artist-photo">🎧</div>
+            <h3>Artista em breve</h3>
+            <p>Perfil disponível em breve</p>
+            <a class="artist-link" href="#contacto">Adicionar artista →</a>
+          </article>
+
+          <article class="artist-card">
+            <div class="artist-photo">⭐</div>
+            <h3>Artista em breve</h3>
+            <p>Perfil disponível em breve</p>
+            <a class="artist-link" href="#contacto">Adicionar artista →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VÍDEOS -->
+    <section class="section" id="videos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Vídeo</div>
+            <h2 class="section-title">Vídeos & Entretenimento 🎬</h2>
+            <p class="section-sub">Quando tiveres os links do YouTube ou outros vídeos, eles podem entrar aqui.</p>
+          </div>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-main">
+            <div class="play">▶</div>
+            <div class="video-copy">
+              <small>DESTAQUE</small>
+              <h3>Videoclipe / conteúdo em destaque</h3>
+            </div>
+          </article>
+
+          <div class="video-stack">
+            <article class="video-small">
+              <div class="play">▶</div>
+              <div class="video-copy"><small>VÍDEO</small><h3>Entrevistas</h3></div>
+            </article>
+            <article class="video-small">
+              <div class="play">▶</div>
+              <div class="video-copy"><small>VÍDEO</small><h3>Conteúdos</h3></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMOÇÃO -->
+    <section class="section promo" id="promocao">
+      <div class="container">
+        <div class="promo-box">
+          <div>
+            <div class="kicker">Para artistas</div>
+            <h2 class="section-title">Queres promover tua música?</h2>
+            <p class="section-sub">
+              Usa esta área para apresentar os serviços de promoção e orientar
+              artistas sobre como entrar em contacto.
+            </p>
+
+            <div class="promo-list">
+              <div><span class="check">✓</span> Promoção musical</div>
+              <div><span class="check">✓</span> Divulgação digital</div>
+              <div><span class="check">✓</span> Promoção de vídeos</div>
+              <div><span class="check">✓</span> Destaque de artistas</div>
+            </div>
+
+            <a class="btn btn-primary" href="https://wa.me/244958940058?text=Olá%20Mike!%20Quero%20promover%20minha%20música%20no%20Mike%20Mikilson%20Promove" target="_blank" rel="noopener">
+              📲 Solicitar promoção
+            </a>
+          </div>
+
+          <div class="promo-art">
+            <div>
+              <strong>O teu som.<br>Mais alcance.</strong>
+              <p style="margin-top:14px;opacity:.88">Mike Mikilson Promove</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="section" id="eventos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Agenda</div>
+            <h2 class="section-title">Eventos 📅</h2>
+            <p class="section-sub">Espaço para shows, apresentações e eventos futuros.</p>
+          </div>
+        </div>
+
+        <article class="event-box">
+          <div class="date"><div><span>EVENTO</span><br>🎤</div></div>
+          <div>
+            <h3>Próximo evento</h3>
+            <p>As informações do próximo evento serão adicionadas aqui.</p>
+          </div>
+          <a class="btn btn-light" href="#contacto">Mais informações</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+      <div class="container contact-grid">
+        <div>
+          <div class="kicker">Contacto</div>
+          <h2 class="section-title">Vamos colocar o teu próximo lançamento na rua.</h2>
+          <p class="section-sub">
+            Para pedidos de promoção, lançamentos, artistas, vídeos ou outras
+            informações, entra em contacto pelo WhatsApp.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <a href="https://wa.me/244958940058?text=Olá%20Mike!%20Quero%20falar%20sobre%20o%20Mike%20Mikilson%20Promove" target="_blank" rel="noopener">💬 WhatsApp — Falar agora</a>
+          <a href="#inicio">⬆ Voltar ao início</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>MIKE MIKILSON PROMOVE</strong><br>
+    Música • Cultura • Entretenimento<br><br>
+    © 2026 Mike Mikilson Promove • Angola 🇦🇴
+  </footer>
+
+  <!-- WhatsApp sempre acessível -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/244958940058?text=Olá%20Mike!%20Quero%20promover%20minha%20música%20no%20Mike%20Mikilson%20Promove"
+    target="_blank"
+    rel="noopener"
+    aria-label="Falar com Mike Mikilson no WhatsApp"
+    title="Falar no WhatsApp"
+  >💬</a>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      });
+    });
+  </script>
+</body>
+</html>
